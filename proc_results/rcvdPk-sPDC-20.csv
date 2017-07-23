@@ -1,0 +1,7 @@
+File,Run,Module,Name,
+results/Test3-20-0.sca,Test3-20-0-20160801-14:44:46-25555,SimNet_simple.sPDC.udp,rcvdPk:count,340
+results/Test3-20-1.sca,Test3-20-1-20160825-10:48:13-4478,SimNet_simple.sPDC.udp,rcvdPk:count,340
+results/Test3-20-2.sca,Test3-20-2-20160801-14:52:31-25658,SimNet_simple.sPDC.udp,rcvdPk:count,316
+results/Test3-20-DS-0.sca,Test3-20-DS-0-20160801-14:54:26-25688,SimNet_simple.sPDC.udp,rcvdPk:count,340
+results/Test3-20-DS-1.sca,Test3-20-DS-1-20160825-10:50:24-4512,SimNet_simple.sPDC.udp,rcvdPk:count,340
+results/Test3-20-DS-2.sca,Test3-20-DS-2-20160825-09:34:58-3860,SimNet_simple.sPDC.udp,rcvdPk:count,340

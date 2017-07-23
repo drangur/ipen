@@ -1,0 +1,632 @@
+                                                                
+version 2
+run DiffServPMU-0-20170712-10:08:18-2715
+attr configname DiffServPMU
+attr datetime 20170712-10:08:18
+attr experiment DiffServPMU
+attr inifile SimNet_simple.ini
+attr iterationvars ""
+attr iterationvars2 $repetition=0
+attr measurement ""
+attr network SimNet_simple
+attr processid 2715
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+
+vector 270  SimNet_simple.PIM2.ppp[0].queue.efQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 274  SimNet_simple.PIM2.ppp[0].queue.beQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 258  SimNet_simple.PIM2.ppp[0].ppp  txState:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "tx state, vector"
+vector 332  SimNet_simple.PIM3.ppp[0].queue.efQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 336  SimNet_simple.PIM3.ppp[0].queue.beQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 320  SimNet_simple.PIM3.ppp[0].ppp  txState:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "tx state, vector"
+vector 210  SimNet_simple.PIM1.eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 222  SimNet_simple.PIM1.eth[1].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 239  SimNet_simple.PIM2.eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 253  SimNet_simple.PIM2.eth[1].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 265  SimNet_simple.PIM2.ppp[0].queue.classifier  pkClass:vector  ETV
+attr interpolationmode  none
+attr source  pkClass
+attr title  "packet class, vector"
+vector 305  SimNet_simple.PIM3.eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 317  SimNet_simple.PIM3.eth[1].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 327  SimNet_simple.PIM3.ppp[0].queue.classifier  pkClass:vector  ETV
+attr interpolationmode  none
+attr source  pkClass
+attr title  "packet class, vector"
+vector 367  SimNet_simple.PIM4.eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 379  SimNet_simple.PIM4.eth[1].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 391  SimNet_simple.PIM4.eth[2].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 408  SimNet_simple.PIM5.eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 206  SimNet_simple.PIM1.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 218  SimNet_simple.PIM1.eth[1].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 235  SimNet_simple.PIM2.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 249  SimNet_simple.PIM2.eth[1].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 271  SimNet_simple.PIM2.ppp[0].queue.beQueue  rcvdPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr title  "received packets, vector(packetBytes)"
+vector 273  SimNet_simple.PIM2.ppp[0].queue.beQueue  queueingTime:vector  ETV
+attr interpolationmode  none
+attr title  "queueing time, vector"
+vector 301  SimNet_simple.PIM3.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 313  SimNet_simple.PIM3.eth[1].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 333  SimNet_simple.PIM3.ppp[0].queue.beQueue  rcvdPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr title  "received packets, vector(packetBytes)"
+vector 335  SimNet_simple.PIM3.ppp[0].queue.beQueue  queueingTime:vector  ETV
+attr interpolationmode  none
+attr title  "queueing time, vector"
+vector 363  SimNet_simple.PIM4.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 375  SimNet_simple.PIM4.eth[1].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 387  SimNet_simple.PIM4.eth[2].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 404  SimNet_simple.PIM5.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 263  SimNet_simple.PIM2.ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, vector(packetBytes)"
+vector 259  SimNet_simple.PIM2.ppp[0].ppp  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToLower
+attr title  "packets transmitted, vector(packetBytes)"
+vector 325  SimNet_simple.PIM3.ppp[0].ppp  rcvdPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, vector(packetBytes)"
+vector 321  SimNet_simple.PIM3.ppp[0].ppp  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToLower
+attr title  "packets transmitted, vector(packetBytes)"
+vector 231  SimNet_simple.PIM2.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 232  SimNet_simple.PIM2.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 201  SimNet_simple.PIM1.eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 213  SimNet_simple.PIM1.eth[1].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 202  SimNet_simple.PIM1.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 203  SimNet_simple.PIM1.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 230  SimNet_simple.PIM2.eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 244  SimNet_simple.PIM2.eth[1].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 359  SimNet_simple.PIM4.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 360  SimNet_simple.PIM4.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 296  SimNet_simple.PIM3.eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 185  SimNet_simple.sPDC.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 186  SimNet_simple.sPDC.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 308  SimNet_simple.PIM3.eth[1].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 297  SimNet_simple.PIM3.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 298  SimNet_simple.PIM3.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 358  SimNet_simple.PIM4.eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 13  SimNet_simple.Receiver.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 14  SimNet_simple.Receiver.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 370  SimNet_simple.PIM4.eth[1].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 478  SimNet_simple.Switch2.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 479  SimNet_simple.Switch2.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 412  SimNet_simple.Switch1.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 413  SimNet_simple.Switch1.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 240  SimNet_simple.PIM2.eth[0].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 211  SimNet_simple.PIM1.eth[0].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 368  SimNet_simple.PIM4.eth[0].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 194  SimNet_simple.sPDC.eth[0].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 306  SimNet_simple.PIM3.eth[0].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 22  SimNet_simple.Receiver.eth[0].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 242  SimNet_simple.PIM2.eth[0].ingressTC.classifier  pkClass:vector  ETV
+attr interpolationmode  none
+attr source  pkClass
+attr title  "packet class, vector"
+vector 493  SimNet_simple.Switch2.eth[1].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 243  SimNet_simple.PIM2.eth[0].ingressTC.marker  markPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  markPk
+attr title  "packets marked, vector(packetBytes)"
+vector 38  SimNet_simple.Source[0].eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 39  SimNet_simple.Source[0].eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 488  SimNet_simple.Switch2.eth[1].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 47  SimNet_simple.Source[0].eth[0].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 382  SimNet_simple.PIM4.eth[2].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 399  SimNet_simple.PIM5.eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 322  SimNet_simple.PIM3.ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 326  SimNet_simple.PIM3.ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 260  SimNet_simple.PIM2.ppp[0].ppp  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 264  SimNet_simple.PIM2.ppp[0].ppp  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 400  SimNet_simple.PIM5.eth[0].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 401  SimNet_simple.PIM5.eth[0].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 383  SimNet_simple.PIM4.eth[2].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 384  SimNet_simple.PIM4.eth[2].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 409  SimNet_simple.PIM5.eth[0].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 392  SimNet_simple.PIM4.eth[2].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 193  SimNet_simple.sPDC.eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 189  SimNet_simple.sPDC.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 309  SimNet_simple.PIM3.eth[1].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 310  SimNet_simple.PIM3.eth[1].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 184  SimNet_simple.sPDC.eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 318  SimNet_simple.PIM3.eth[1].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 74  SimNet_simple.sPMU[1].udpApp[0]  sentPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  sentPk
+attr title  "packets sent, vector(packetBytes)"
+vector 99  SimNet_simple.sPMU[2].udpApp[0]  sentPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  sentPk
+attr title  "packets sent, vector(packetBytes)"
+vector 124  SimNet_simple.sPMU[3].udpApp[0]  sentPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  sentPk
+attr title  "packets sent, vector(packetBytes)"
+vector 149  SimNet_simple.sPMU[4].udpApp[0]  sentPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  sentPk
+attr title  "packets sent, vector(packetBytes)"
+vector 51  SimNet_simple.sPMU[0].udp  sentPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  sentPk
+attr title  "packets sent, vector(packetBytes)"
+vector 76  SimNet_simple.sPMU[1].udp  sentPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  sentPk
+attr title  "packets sent, vector(packetBytes)"
+vector 101  SimNet_simple.sPMU[2].udp  sentPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  sentPk
+attr title  "packets sent, vector(packetBytes)"
+vector 126  SimNet_simple.sPMU[3].udp  sentPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  sentPk
+attr title  "packets sent, vector(packetBytes)"
+vector 151  SimNet_simple.sPMU[4].udp  sentPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  sentPk
+attr title  "packets sent, vector(packetBytes)"
+vector 59  SimNet_simple.sPMU[0].lo0.lo  rcvdPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, vector(packetBytes)"
+vector 60  SimNet_simple.sPMU[0].lo0.lo  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 70  SimNet_simple.sPMU[0].eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 84  SimNet_simple.sPMU[1].lo0.lo  rcvdPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, vector(packetBytes)"
+vector 85  SimNet_simple.sPMU[1].lo0.lo  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 95  SimNet_simple.sPMU[1].eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 109  SimNet_simple.sPMU[2].lo0.lo  rcvdPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, vector(packetBytes)"
+vector 110  SimNet_simple.sPMU[2].lo0.lo  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 120  SimNet_simple.sPMU[2].eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 134  SimNet_simple.sPMU[3].lo0.lo  rcvdPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, vector(packetBytes)"
+vector 135  SimNet_simple.sPMU[3].lo0.lo  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 145  SimNet_simple.sPMU[3].eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 159  SimNet_simple.sPMU[4].lo0.lo  rcvdPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetReceivedFromUpper
+attr title  "packets received from higher layer, vector(packetBytes)"
+vector 160  SimNet_simple.sPMU[4].lo0.lo  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 170  SimNet_simple.sPMU[4].eth[0].encap  encapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  encapPk
+attr title  "packets encapsulated, vector(packetBytes)"
+vector 66  SimNet_simple.sPMU[0].eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 91  SimNet_simple.sPMU[1].eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 116  SimNet_simple.sPMU[2].eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 141  SimNet_simple.sPMU[3].eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 166  SimNet_simple.sPMU[4].eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 52  SimNet_simple.sPMU[0].udp  rcvdPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rcvdPk
+attr title  "packets received, vector(packetBytes)"
+vector 54  SimNet_simple.sPMU[0].udp  droppedPkWrongPort:vector(count)  ETV
+attr interpolationmode  none
+attr title  "packets dropped (wrong port), vector(count)"
+vector 77  SimNet_simple.sPMU[1].udp  rcvdPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rcvdPk
+attr title  "packets received, vector(packetBytes)"
+vector 79  SimNet_simple.sPMU[1].udp  droppedPkWrongPort:vector(count)  ETV
+attr interpolationmode  none
+attr title  "packets dropped (wrong port), vector(count)"
+vector 102  SimNet_simple.sPMU[2].udp  rcvdPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rcvdPk
+attr title  "packets received, vector(packetBytes)"
+vector 104  SimNet_simple.sPMU[2].udp  droppedPkWrongPort:vector(count)  ETV
+attr interpolationmode  none
+attr title  "packets dropped (wrong port), vector(count)"
+vector 127  SimNet_simple.sPMU[3].udp  rcvdPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rcvdPk
+attr title  "packets received, vector(packetBytes)"
+vector 129  SimNet_simple.sPMU[3].udp  droppedPkWrongPort:vector(count)  ETV
+attr interpolationmode  none
+attr title  "packets dropped (wrong port), vector(count)"
+vector 152  SimNet_simple.sPMU[4].udp  rcvdPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rcvdPk
+attr title  "packets received, vector(packetBytes)"
+vector 154  SimNet_simple.sPMU[4].udp  droppedPkWrongPort:vector(count)  ETV
+attr interpolationmode  none
+attr title  "packets dropped (wrong port), vector(count)"
+vector 61  SimNet_simple.sPMU[0].eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 86  SimNet_simple.sPMU[1].eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 111  SimNet_simple.sPMU[2].eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 136  SimNet_simple.sPMU[3].eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 161  SimNet_simple.sPMU[4].eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 423  SimNet_simple.Switch1.eth[1].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 424  SimNet_simple.Switch1.eth[1].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 434  SimNet_simple.Switch1.eth[2].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 435  SimNet_simple.Switch1.eth[2].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 445  SimNet_simple.Switch1.eth[3].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 446  SimNet_simple.Switch1.eth[3].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 456  SimNet_simple.Switch1.eth[4].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 457  SimNet_simple.Switch1.eth[4].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 467  SimNet_simple.Switch1.eth[5].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 468  SimNet_simple.Switch1.eth[5].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 416  SimNet_simple.Switch1.eth[0].mac  rxPkFromHL:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkFromHL
+attr title  "packet bytes from higher layer, vector(packetBytes)"
+vector 245  SimNet_simple.PIM2.eth[1].mac  rxPkOk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rxPkOk
+attr title  "packets received OK, vector(packetBytes)"
+vector 246  SimNet_simple.PIM2.eth[1].mac  passedUpPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  packetSentToUpper
+attr title  "packets passed to higher layer, vector(packetBytes)"
+vector 411  SimNet_simple.Switch1.eth[0].mac  txPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  txPk
+attr title  "packets transmitted, vector(packetBytes)"
+vector 254  SimNet_simple.PIM2.eth[1].encap  decapPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  decapPk
+attr title  "packets decapsulated, vector(packetBytes)"
+vector 256  SimNet_simple.PIM2.eth[1].ingressTC.classifier  pkClass:vector  ETV
+attr interpolationmode  none
+attr source  pkClass
+attr title  "packet class, vector"
+vector 257  SimNet_simple.PIM2.eth[1].ingressTC.marker  markPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  markPk
+attr title  "packets marked, vector(packetBytes)"
+vector 275  SimNet_simple.PIM2.ppp[0].queue.af1xQueue.fifoQueue  rcvdPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr title  "received packets, vector(packetBytes)"
+vector 278  SimNet_simple.PIM2.ppp[0].queue.af1xQueue.fifoQueue  queueLength:vector  ETV
+attr interpolationmode  sample-hold
+attr title  "queue length, vector"
+vector 277  SimNet_simple.PIM2.ppp[0].queue.af1xQueue.fifoQueue  queueingTime:vector  ETV
+attr interpolationmode  none
+attr title  "queueing time, vector"
+vector 175  SimNet_simple.sPDC.udp  rcvdPk:vector(packetBytes)  ETV
+attr interpolationmode  none
+attr source  rcvdPk
+attr title  "packets received, vector(packetBytes)"
+vector 176  SimNet_simple.sPDC.udp  passedUpPk:vector(count)  ETV
+attr interpolationmode  none
+attr title  "packets passed up, vector(count)"
+vector 173  SimNet_simple.sPDC.udpApp[0]  endToEndDelay:vector  ETV
+attr interpolationmode  none
+attr source  messageAge(rcvdPk)
+attr title  "end-to-end delay, vector"
+attr unit  s
