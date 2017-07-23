@@ -97,11 +97,16 @@ network SimNet_simple
 
         PIM1: MulticastRouter {
             parameters:
-                @display("p=672,173;i=abstract/multicast;t=ext");
-                numExtInterfaces = 1;
+//        config for external interfaces
+//                @display("p=672,173;i=abstract/multicast;t=ext");
+//                numExtInterfaces = 1;
+                @display("p=672,173;i=abstract/multicast");
+
             gates:
                 ethg[2];
         }
+
+
         PIM2: MulticastRouter {
             parameters:
                 @display("p=672,295;i=abstract/multicast");
@@ -120,15 +125,19 @@ network SimNet_simple
         }
         PIM4: MulticastRouter {
             parameters:
-                @display("p=364,173;t=ext;i=abstract/multicast");
-                numExtInterfaces = 1;
+//        config for external interfaces
+//                @display("p=364,173;t=ext;i=abstract/multicast");
+//                numExtInterfaces = 1;
+                @display("p=364,173;i=abstract/multicast");
             gates:
                 ethg[3];
         }
         PIM5: MulticastRouter {
             parameters:
-                @display("p=516,173;t=ext");
-                numExtInterfaces = 1;
+//        config for external interfaces
+//                @display("p=516,173;t=ext");
+//                numExtInterfaces = 1;
+                  @display("p=516,173");
             gates:
                 ethg[1];
         }
