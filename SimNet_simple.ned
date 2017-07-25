@@ -39,13 +39,13 @@ import inet.node.ethernet.EtherSwitch;
 
 
 //channel bottleNeck extends netperfmeter {
-    
+
 //}
 
 channel Ether2M extends ned.DatarateChannel
 {
-	datarate = default(2 Mbps);
-	delay = default(50ms);
+    datarate = default(2 Mbps);
+    delay = default(50ms);
 }
 
 
@@ -54,7 +54,7 @@ network SimNet_simple
     parameters:
         int numPMU = default(1);
         int numSources = default(1);
-        
+
         double channelDelay @unit("ms") = default(50ms);
         double channelBer = default(0.0);
         double channelPer = default(0.0);
@@ -70,9 +70,9 @@ network SimNet_simple
                 ethg[1];
         }
         Source[numSources]: StandardHost {
-        //Source: StandardHost {
+            //Source: StandardHost {
             parameters:
-                @display("p=776,173");
+                @display("p=845.61,83.369995");
                 forwarding = false;
             gates:
                 ethg[1];
@@ -106,7 +106,7 @@ network SimNet_simple
             parameters:
                 @display("p=672,295;i=abstract/multicast");
             gates:
-               // ethg[3];
+                // ethg[3];
                 ethg[2];
                 pppg[1];
         }
@@ -114,7 +114,7 @@ network SimNet_simple
             parameters:
                 @display("p=364,295;i=abstract/multicast");
             gates:
-               // ethg[3];
+                // ethg[3];
                 ethg[2];
                 pppg[1];
         }
@@ -136,10 +136,11 @@ network SimNet_simple
         Switch1: EtherSwitch {
             @display("p=672,365");
         }
-        
+
         Switch2: EtherSwitch {
+            @display("p=845.61,181.62749");
         }
-        
+
         configurator: IPv4NetworkConfigurator {
             @display("p=1067,433");
         }
@@ -147,27 +148,27 @@ network SimNet_simple
     connections:
 
         PIM1.ethg[0] <--> Ethernet1G <--> PIM2.ethg[0];
-        PIM2.pppg[0] <--> Ether2M { @display("ls=goldenrod4,3"); delay=channelDelay; ber=channelBer; per=channelPer;} <--> PIM3.pppg[0];
-       // PIM2.ethg[1] <--> Ether2M { @display("ls=goldenrod4,3"); delay=channelDelay; ber=channelBer; per=channelPer;} <--> PIM3.ethg[0];
-       PIM3.ethg[0] <--> Ethernet1G <--> PIM4.ethg[0];
-       // PIM3.ethg[1] <--> Ethernet1G <--> PIM4.ethg[0];
-        PIM4.ethg[2] <--> Ether2M { @display("ls=goldenrod4,3"); delay=channelDelay; ber=channelBer; per=channelPer;} <--> PIM5.ethg[0];
+        PIM2.pppg[0] <--> Ether2M { @display("ls=goldenrod4,3"); delay = channelDelay; ber = channelBer; per = channelPer; } <--> PIM3.pppg[0];
+        // PIM2.ethg[1] <--> Ether2M { @display("ls=goldenrod4,3"); delay=channelDelay; ber=channelBer; per=channelPer;} <--> PIM3.ethg[0];
+        PIM3.ethg[0] <--> Ethernet1G <--> PIM4.ethg[0];
+        // PIM3.ethg[1] <--> Ethernet1G <--> PIM4.ethg[0];
+        PIM4.ethg[2] <--> Ether2M { @display("ls=goldenrod4,3"); delay = channelDelay; ber = channelBer; per = channelPer; } <--> PIM5.ethg[0];
 		//PIM4.ethg[2] <--> Ethernet10M{delay=50ms;datarate=10Mbps;} <--> PIM5.ethg[0];
 
         Receiver.ethg[0] <--> Ethernet1G <--> PIM4.ethg[1];
         //Source.ethg[0] <--> Ethernet1G <--> PIM1.ethg[1];
 
-		Switch2.ethg++ <--> Ethernet1G <--> PIM1.ethg[1];
-		for i=0..numSources-1 {
-			Source[i].ethg[0] <--> Ethernet1G <--> Switch2.ethg++;
-		}
+        Switch2.ethg++ <--> Ethernet1G <--> PIM1.ethg[1];
+        for i=0..numSources-1 {
+            Source[i].ethg[0] <--> Ethernet1G <--> Switch2.ethg++;
+        }
 
-		Switch1.ethg++ <--> Ethernet1G <--> PIM2.ethg[1];
+        Switch1.ethg++ <--> Ethernet1G <--> PIM2.ethg[1];
         //Switch1.ethg++ <--> Ethernet1G <--> PIM2.ethg[2];
         for i=0..numPMU-1 {
             sPMU[i].ethg[0] <--> Ethernet1G <--> Switch1.ethg++;
         }
-       // sPDC.ethg[0] <--> Ethernet1G <--> PIM3.ethg[2];
-       sPDC.ethg[0] <--> Ethernet1G <--> PIM3.ethg[1];
+        // sPDC.ethg[0] <--> Ethernet1G <--> PIM3.ethg[2];
+        sPDC.ethg[0] <--> Ethernet1G <--> PIM3.ethg[1];
 
 }
