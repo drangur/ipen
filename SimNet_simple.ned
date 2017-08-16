@@ -97,7 +97,7 @@ network SimNet_simple
 
         PIM1: MulticastRouter {
             parameters:
-        config for external interfaces
+                // config for external interfaces
                 @display("p=672,173;i=abstract/multicast;t=ext");
                 numExtInterfaces = 1;
 
@@ -124,7 +124,7 @@ network SimNet_simple
         }
         PIM4: MulticastRouter {
             parameters:
-        config for external interfaces
+                // config for external interfaces
                 @display("p=364,173;t=ext;i=abstract/multicast");
                 numExtInterfaces = 1;
             gates:
@@ -132,7 +132,7 @@ network SimNet_simple
         }
         PIM5: MulticastRouter {
             parameters:
-        config for external interfaces
+                // config for external interfaces
                 @display("p=516,173;t=ext");
                 numExtInterfaces = 1;
             gates:
@@ -158,8 +158,8 @@ network SimNet_simple
         // PIM2.ethg[1] <--> Ether2M { @display("ls=goldenrod4,3"); delay=channelDelay; ber=channelBer; per=channelPer;} <--> PIM3.ethg[0];
         PIM3.ethg[0] <--> Ethernet1G <--> PIM4.ethg[0];
         // PIM3.ethg[1] <--> Ethernet1G <--> PIM4.ethg[0];
-        PIM4.ethg[2] <--> Ether2M { @display("ls=goldenrod4,3"); delay = channelDelay; ber = channelBer; per = channelPer; } <--> PIM5.ethg[0];
-		//PIM4.ethg[2] <--> Ethernet10M{delay=50ms;datarate=10Mbps;} <--> PIM5.ethg[0];
+        //PIM4.ethg[2] <--> Ether2M { @display("ls=goldenrod4,3"); delay = channelDelay; ber = channelBer; per = channelPer; datarate = 2Mbps; } <--> PIM5.ethg[0];
+		PIM4.ethg[2] <--> Ethernet10M{delay=50ms;datarate=10Mbps;} <--> PIM5.ethg[0];
 
         Receiver.ethg[0] <--> Ethernet1G <--> PIM4.ethg[1];
         //Source.ethg[0] <--> Ethernet1G <--> PIM1.ethg[1];
