@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=/opt/omnetpp/bin/omnetpp
+Icon=/opt/omnetpp/ide/icon.png
+Name=OMNeT++ 5.1.1 IDE
+Categories=Development;IDE;Debugger
