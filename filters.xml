@@ -1,0 +1,9 @@
+<filters>
+  
+  <experiment id="DiffServ">
+    <filter destAddress="227.0.0.1" gate="0"/>
+    <filter destAddress="232.0.0.12" gate="0"/>
+    <filter destAddress="192.168.253.12" gate="0"/>
+  </experiment>
+
+</filters>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<libtable>
+	<libentry>
+		<inLabel>102</inLabel>
+		<inInterface>ppp0</inInterface>
+		<outInterface>ppp1</outInterface>
+		<outLabel>
+			<op code="pop"/>
+		</outLabel>
+		<color>100</color>
+	</libentry>
+</libtable>

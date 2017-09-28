@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<fectable>
+	<fecentry>
+		<id>3</id>
+
+		<destination>227.0.0.1</destination>
+		<source>172.20.0.11</source>
+		
+		<lspid>200</lspid>
+		<tunnel_id>2</tunnel_id>
+	</fecentry>
+</fectable>

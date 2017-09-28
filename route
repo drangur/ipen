@@ -1,0 +1,9 @@
+ //destination needs to be specified, if not the simulator assumes that the source is directly connected and doesnt send JOIN Message. 
+  <route hosts="PIM3" destination="224.0.0.0" netmask="240.0.0.0" interface="ppp0"/>
+  <route hosts="PIM3" destination="172.16.40.0" netmask="255.255.255.0" gateway="192.168.12.1"/>
+  <route hosts="PIM2" destination="*" netmask="*" interface="ppp0"/>
+  <route hosts="PIM1" destination="*" netmask="*" interface="ppp1"/>
+  
+  <multicast-route hosts="LSR3" groups="232.0.0.11" parent="ppp1" children="ppp0"/>
+  <multicast-route hosts="LSR2" groups="232.0.0.11" parent="ppp1" children="ppp0"/>
+  <multicast-route hosts="LSR1" groups="232.0.0.11" parent="ppp0" children="ppp1"/>
