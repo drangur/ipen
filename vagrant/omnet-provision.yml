@@ -1,0 +1,179 @@
+---
+- hosts: all
+  remote_user: root
+  sudo: true
+  environment:
+    DISPLAY: ':0.0'
+    PATH: "/opt/omnetpp-5.1.1/bin:/bin"
+  tasks:
+    - name: set hostname
+      hostname:
+        name: omnetdev
+    
+    - name: switch runlevel to 3
+      command: "{{ item }}"
+      with_items: 
+        - "/sbin/init 3"
+
+    - name: enable autologin
+      lineinfile:
+        dest: /etc/gdm/custom.conf
+        insertafter: '^\[daemon\]'
+        line: "{{ item }}"
+      with_items:  
+        - "AutomaticLoginEnable=true"
+        - "AutomaticLogin=root"
+
+    - name: set locale
+      shell: "{{ item }}"
+        - localectl set-locale LANG=de_AT.utf8
+        - localectl set-keymap de-nodeadkeys
+        - localectl set-x11-keymap de
+
+    - name: install yum
+      shell: dnf -y install yum 
+
+    - name: install required software
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - gcc-c++
+        - qt5-qtbase-devel
+        - tk-devel
+#        - nemiver
+        - libpcap-devel
+        - libpcap
+        - openmpi-devel
+        - libxml2-devel
+        - flex
+        - bison
+        - java-1.8.0-openjdk
+          #- "@X Window System"
+          #- "@xfce"
+        - git
+        - "kernel-devel-{{ ansible_kernel }}"
+        - xdg-utils
+        - libselinux-python
+    
+    - name: remove openbox
+      yum:
+        name: "openbox"
+        state: absent
+    
+    - name: disable selinux
+      selinux:
+        state: disabled
+
+        # brauchen wir nicht mehr
+        # die aktuelle box hat die guest extensions schon drin
+        #    - name: build guest extensions
+        #      shell: sh /vagrant/vbox/VBoxLinuxAdditions.run --nox11
+        #      args:
+        #        creates: /opt/VBoxGuestAdditions-5.1.28/lib/VBoxGuestAdditions/vboxvideo_drv.o
+        #      register:
+        #        built_guest_extensions
+
+    - name: download omnet
+      get_url:
+        url: https://omnetpp.org/omnetpp/send/30-omnet-releases/2314-omnetpp-5-1-1-linux
+        dest: /vagrant/omnetpp-5.1.1-src-linux.tgz
+        force: no
+        checksum: md5:eb7aab92f62314f4df060b5af399cddd
+        headers: Referer:https://omnetpp.org/omnetpp/category/30-omnet-releases
+    
+    - name: extract omnet
+      unarchive:
+        remote_src: yes
+        src: /vagrant/omnetpp-5.1.1-src-linux.tgz
+        dest: /opt
+        creates: /opt/omnetpp-5.1.1/configure.user
+    
+    - name: create symlink
+      file:
+        src: /opt/omnetpp-5.1.1
+        dest: /opt/omnetpp
+        state: link
+
+    - name: disable osg
+      lineinfile:
+        path: /opt/omnetpp/configure.user
+        line: "{{ item }}"
+      with_items:
+        - "WITH_OSGEARTH=no"
+        - "WITH_OSG=no"
+
+    - name: set env stuff
+      lineinfile:
+        path: /root/.bashrc
+        line: "{{ item }}"
+      with_items:
+        - "export PATH=$PATH:/opt/omnetpp/bin"
+        - "export TERM=xterm"
+
+    - name: switch runlevel to 5
+      command: "{{ item }}"
+      with_items: 
+        - "/sbin/init 5"
+
+    - name: run configure
+      command: ./configure
+      args:
+        chdir: /opt/omnetpp
+        creates: /opt/omnetpp/config.log
+      register: stdout_configure
+
+    - name: run make
+      command: "make {{ item }} -j 3"
+      args:
+        chdir: /opt/omnetpp
+        creates: /opt/omnetpp-5.1.1/out/gcc-debug/src/envir/opp_run
+      register: stdout_make
+      with_items:
+        - "base"
+    
+    - name: pull inet
+      git:
+        repo: https://github.com/inet-framework/inet.git
+        dest: /opt/omnetpp/samples/inet
+
+    - name: build inet
+      command: "make {{ item }} -j 3"
+      args:
+        chdir: /opt/omnetpp/samples/inet
+        creates: /opt/omnetpp/samples/inet/out/gcc-debug/src/libINET.so
+      with_items:
+        - "makefiles"
+        - "all"
+
+    - name: enable x forwarding
+      command: "xhost +0.0.0.0"
+
+    - name: create desktop directory
+      file:
+        path: /root/Desktop
+        state: directory
+
+    - name: create desktop shortcut
+      copy:
+        src: /vagrant/opensim-ide.desktop
+        dest: /root/Desktop/opensim-ide.desktop
+        mode: 0755
+
+    - name: enable graphics mode, restart x for autologin
+      command: "{{ item }}"
+      with_items: 
+        - "systemctl set-default graphical.target"
+        - "systemctl isolate multiuser.target"
+        - "systemctl isolate graphical.target"
+
+          #    - name: pull sdn project
+          #      git:
+          #        repo: "{{ item }}"
+          #        dest: /opt/omnetpp/samples/inet/examples/sdndemo
+          #      with_items:
+          #        - "https://foofoo"
+
+          #    - name: reboot if necessary
+          #      shell: reboot
+          #      when: built_guest_extensions.changed
