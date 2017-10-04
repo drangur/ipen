@@ -15,8 +15,10 @@
       with_items: 
         - "/sbin/init 3"
 
-    - name: libselinux-python
-      shell: yum install libselinux-python
+    - name: install libselinux-python
+      yum:
+        name: libselinux-python
+        state: present
 
     - name: enable autologin
       lineinfile:
@@ -27,12 +29,15 @@
         - "AutomaticLoginEnable=true"
         - "AutomaticLogin=root"
 
+    - name: set locale 1
+      command: "localectl set-locale LANG=de_AT.utf8"
+
 # Muss gefixt werden
-#    - name: set locale
-#      shell: "{{ item }}"
-#        - localectl set-locale LANG=de_AT.utf8
-#        - localectl set-keymap de-nodeadkeys
-#        - localectl set-x11-keymap de
+#    - name: set locale 2
+#      command: "set-keymap de-nodeadkeys"
+
+    - name: set locale 3
+      command: "localectl set-x11-keymap de"
 
     - name: install yum
       shell: dnf -y install yum 
@@ -58,7 +63,6 @@
         - git
         - "kernel-devel-{{ ansible_kernel }}"
         - xdg-utils
-        - libselinux-python
     
     - name: remove openbox
       yum:
@@ -164,12 +168,15 @@
         dest: /root/Desktop/opensim-ide.desktop
         mode: 0755
 
-    - name: enable graphics mode, restart x for autologin
-      command: "{{ item }}"
-      with_items: 
-        - "systemctl set-default graphical.target"
-        - "systemctl isolate multiuser.target"
-        - "systemctl isolate graphical.target"
+    - name: enable graphics mode, restart x for autologin 1
+      command: "systemctl set-default graphical.target"
+
+# Muss gefixt werden
+#    - name: enable graphics mode, restart x for autologin 2
+#      command: "systemctl isolate multiuser.target"
+
+    - name: enable graphics mode, restart x for autologin 3
+      command: "systemctl isolate graphical.target"
 
           #    - name: pull sdn project
           #      git:
