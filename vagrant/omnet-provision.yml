@@ -15,6 +15,9 @@
       with_items: 
         - "/sbin/init 3"
 
+    - name: libselinux-python
+      shell: yum install libselinux-python
+
     - name: enable autologin
       lineinfile:
         dest: /etc/gdm/custom.conf
@@ -24,11 +27,12 @@
         - "AutomaticLoginEnable=true"
         - "AutomaticLogin=root"
 
-    - name: set locale
-      shell: "{{ item }}"
-        - localectl set-locale LANG=de_AT.utf8
-        - localectl set-keymap de-nodeadkeys
-        - localectl set-x11-keymap de
+# Muss gefixt werden
+#    - name: set locale
+#      shell: "{{ item }}"
+#        - localectl set-locale LANG=de_AT.utf8
+#        - localectl set-keymap de-nodeadkeys
+#        - localectl set-x11-keymap de
 
     - name: install yum
       shell: dnf -y install yum 
