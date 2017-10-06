@@ -178,12 +178,12 @@
     - name: enable graphics mode, restart x for autologin 3
       command: "systemctl isolate graphical.target"
 
-          #    - name: pull sdn project
-          #      git:
-          #        repo: "{{ item }}"
-          #        dest: /opt/omnetpp/samples/inet/examples/sdndemo
-          #      with_items:
-          #        - "https://foofoo"
+    - name: pull GIT project
+      git:
+        repo: "{{ item }}"
+        dest: /opt/omnetpp/samples/inet/examples/sdndemo
+      with_items:
+        - "https://github.com/drangur/ipen.git"
 
           #    - name: reboot if necessary
           #      shell: reboot
