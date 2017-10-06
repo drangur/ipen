@@ -3,18 +3,13 @@
   remote_user: root
   sudo: true
   environment:
-    DISPLAY: ':0.0'
+          #    DISPLAY: ':0.0'
     PATH: "/opt/omnetpp-5.1.1/bin:/bin"
   tasks:
     - name: set hostname
       hostname:
         name: omnetdev
     
-    - name: switch runlevel to 3
-      command: "{{ item }}"
-      with_items: 
-        - "/sbin/init 3"
-
     - name: install yum
       shell: dnf -y install yum 
 
@@ -22,15 +17,6 @@
       yum:
         name: libselinux-python
         state: present
-
-    - name: enable autologin
-      lineinfile:
-        dest: /etc/gdm/custom.conf
-        insertafter: '^\[daemon\]'
-        line: "{{ item }}"
-      with_items:  
-        - "AutomaticLoginEnable=true"
-        - "AutomaticLogin=root"
 
     - name: set locale 1
       command: "localectl set-locale LANG=de_AT.utf8"
@@ -40,7 +26,6 @@
 
     - name: set locale 3
       command: "localectl set-x11-keymap de"
-
 
     - name: install required software
       yum:
@@ -69,7 +54,7 @@
       yum:
         name: "openbox"
         state: absent
-    
+
     - name: disable selinux
       selinux:
         state: disabled
@@ -104,6 +89,7 @@
         dest: /opt/omnetpp
         state: link
 
+
     - name: disable osg
       lineinfile:
         path: /opt/omnetpp/configure.user
@@ -112,18 +98,18 @@
         - "WITH_OSGEARTH=no"
         - "WITH_OSG=no"
 
-    - name: set env stuff
+    - name: skip install assistant
       lineinfile:
-        path: /root/.bashrc
-        line: "{{ item }}"
-      with_items:
-        - "export PATH=$PATH:/opt/omnetpp/bin"
-        - "export TERM=xterm"
+        dest: /root/.config/gnome-initial-setup-done
+        create: yes
+        line: yes
+        state: present
 
-    - name: switch runlevel to 5
+    - name: restart gnome session as user
       command: "{{ item }}"
       with_items: 
-        - "/sbin/init 5"
+        - "/sbin/init 3"
+        - "startx &"
 
     - name: run configure
       command: ./configure
@@ -131,6 +117,8 @@
         chdir: /opt/omnetpp
         creates: /opt/omnetpp/config.log
       register: stdout_configure
+      environment:
+              DISPLAY: ":0.0"
 
     - name: run make
       command: "make {{ item }} -j 3"
@@ -155,43 +143,59 @@
         - "makefiles"
         - "all"
 
-    - name: enable x forwarding
-      command: "xhost +0.0.0.0"
+    - name: pull GIT projects
+      git:
+        repo: "{{ item.repo }}"
+        dest: "{{ item.dest }}"
+      with_items:
+              - repo: "https://github.com/drangur/ipen.git"
+                dest: "/opt/omnetpp/samples/sdndemo"
+              - repo: "https://github.com/fstolba/ofomnet.git"
+                dest: "/opt/omnetpp/samples/ofomnet"
 
-    - name: create desktop directory
-      file:
-        path: /root/Desktop
-        state: directory
+
+## DESKTOP STUFF GNOME SETTINGS USW
+    - name: stop x
+      command: "{{ item }}"
+      with_items: 
+        - "/sbin/init 3"
+
+    - name: enable autologin
+      lineinfile:
+        dest: /etc/gdm/custom.conf
+        insertafter: '^\[daemon\]'
+        line: "{{ item }}"
+      with_items:  
+        - "AutomaticLoginEnable=true"
+        - "AutomaticLogin=root"
 
     - name: create desktop shortcut
       copy:
         src: /vagrant/opensim-ide.desktop
-        dest: /root/Desktop/opensim-ide.desktop
-        mode: 0755
+        dest: /root/.local/share/applications/opensim-ide.desktop
+        mode: 0777
 
-    - name: enable graphics mode, restart x for autologin 1
-      command: "systemctl set-default graphical.target"
+    - name: create directory
+      file:
+        path: /etc/dconf/db/local.d
+        state: directory
 
-# Muss gefixt werden
-#    - name: enable graphics mode, restart x for autologin 2
-#      command: "systemctl isolate multiuser.target"
+    - name: set gnome settings
+      copy:
+        src: /vagrant/gnome-settings
+        dest: /etc/dconf/db/local.d/vagrant-settings
+    - lineinfile:
+        create: yes
+        dest: /etc/dconf/profile/user
+        line: "{{ item }}"
+        state: present
+      with_items:
+        - "user-db:user"
+        - "system-db:local"
 
-    - name: enable graphics mode, restart x for autologin 3
+    - name: update dconf bus
+      shell:
+        cmd: "dconf update"
+
+    - name: start x
       command: "systemctl isolate graphical.target"
-
-    - name: pull GIT project 1
-      git:
-        repo: "{{ item }}"
-        dest: /opt/omnetpp/samples/sdndemo
-      with_items:
-        - "https://github.com/drangur/ipen.git"
-
-    - name: pull GIT project 2
-      git:
-        repo: "{{ item }}"
-        dest: /opt/omnetpp/samples/ofomnet
-      with_items:
-        - "https://github.com/fstolba/ofomnet.git"
-
-#    - name: reboot
-#      shell: reboot
