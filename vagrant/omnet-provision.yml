@@ -178,13 +178,19 @@
     - name: enable graphics mode, restart x for autologin 3
       command: "systemctl isolate graphical.target"
 
-    - name: pull GIT project
+    - name: pull GIT project 1
       git:
         repo: "{{ item }}"
-        dest: /opt/omnetpp/samples/inet/examples/sdndemo
+        dest: /opt/omnetpp/samples/sdndemo
       with_items:
         - "https://github.com/drangur/ipen.git"
+		
+    - name: pull GIT project 2
+      git:
+        repo: "{{ item }}"
+        dest: /opt/omnetpp/samples/ofomnet
+      with_items:
+        - "https://github.com/fstolba/ofomnet.git"
 
-          #    - name: reboot if necessary
-          #      shell: reboot
-          #      when: built_guest_extensions.changed
+    #- name: reboot
+    #  shell: reboot
