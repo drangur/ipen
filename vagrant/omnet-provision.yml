@@ -15,6 +15,9 @@
       with_items: 
         - "/sbin/init 3"
 
+    - name: install yum
+      shell: dnf -y install yum 
+
     - name: install libselinux-python
       yum:
         name: libselinux-python
@@ -38,9 +41,6 @@
 
     - name: set locale 3
       command: "localectl set-x11-keymap de"
-
-    - name: install yum
-      shell: dnf -y install yum 
 
     - name: install required software
       yum:
