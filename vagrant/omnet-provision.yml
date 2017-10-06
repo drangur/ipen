@@ -35,12 +35,12 @@
     - name: set locale 1
       command: "localectl set-locale LANG=de_AT.utf8"
 
-# Muss gefixt werden
-#    - name: set locale 2
-#      command: "set-keymap de-nodeadkeys"
+    - name: set locale 2
+      command: "localectl set-keymap de-nodeadkeys"
 
     - name: set locale 3
       command: "localectl set-x11-keymap de"
+
 
     - name: install required software
       yum:
