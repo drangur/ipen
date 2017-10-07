@@ -10,6 +10,25 @@
       hostname:
         name: omnetdev
     
+    - name: skip install assistant
+      lineinfile:
+        dest: /root/.config/gnome-initial-setup-done
+        create: yes
+        line: yes
+        state: present
+
+    - shell:
+        cmd: "{{ item }}"
+      with_items:
+        - "/sbin/init 3"
+        - "/sbin/init 5"
+        - "/bin/sleep 30"
+
+          #    - name: restart gnome session as user
+          #      systemd:
+          #        name: gdm
+          #        state: restarted
+
     - name: install yum
       shell: dnf -y install yum 
 
@@ -98,27 +117,14 @@
         - "WITH_OSGEARTH=no"
         - "WITH_OSG=no"
 
-    - name: skip install assistant
-      lineinfile:
-        dest: /root/.config/gnome-initial-setup-done
-        create: yes
-        line: yes
-        state: present
-
-    - name: restart gnome session as user
-      command: "{{ item }}"
-      with_items: 
-        - "/sbin/init 3"
-        - "startx &"
-
     - name: run configure
       command: ./configure
       args:
         chdir: /opt/omnetpp
-        creates: /opt/omnetpp/config.log
+        #  creates: /opt/omnetpp/Makefile.inc
       register: stdout_configure
       environment:
-              DISPLAY: ":0.0"
+        DISPLAY: ":0.0"
 
     - name: run make
       command: "make {{ item }} -j 3"
@@ -155,10 +161,6 @@
 
 
 ## DESKTOP STUFF GNOME SETTINGS USW
-    - name: stop x
-      command: "{{ item }}"
-      with_items: 
-        - "/sbin/init 3"
 
     - name: enable autologin
       lineinfile:
@@ -197,5 +199,9 @@
       shell:
         cmd: "dconf update"
 
-    - name: start x
-      command: "systemctl isolate graphical.target"
+    - shell:
+        cmd: "{{ item }}"
+      with_items:
+        - "/sbin/init 3"
+        - "/sbin/init 5"
+        - "/bin/sleep 30"
