@@ -9,6 +9,14 @@
     - name: set hostname
       hostname:
         name: omnetdev
+
+    - name: install yum
+      shell: dnf -y install yum 
+
+    - name: install libselinux-python
+      yum:
+        name: libselinux-python
+        state: present
     
     - name: skip install assistant
       lineinfile:
@@ -28,14 +36,6 @@
           #      systemd:
           #        name: gdm
           #        state: restarted
-
-    - name: install yum
-      shell: dnf -y install yum 
-
-    - name: install libselinux-python
-      yum:
-        name: libselinux-python
-        state: present
 
     - name: set locale 1
       command: "localectl set-locale LANG=de_AT.utf8"
