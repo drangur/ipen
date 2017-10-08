@@ -158,6 +158,15 @@
         - "makefiles"
         - "all"
 
+    - name: copy required inet changes
+      command: "cp {{ item }}"
+      args:
+        chdir: /opt/omnetpp/samples/inet
+      with_items:
+        - "/vagrant/inet_changes/EtherMAC.ned /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/ethernet/"
+        - "/vagrant/inet_changes/EtherMACFullDuplex.ned /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/ethernet/"
+        - "/vagrant/inet_changes/MACBase.cc /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/base/"
+
     - name: pull GIT projects
       git:
         repo: "{{ item.repo }}"
