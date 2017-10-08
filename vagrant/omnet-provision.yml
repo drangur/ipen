@@ -149,15 +149,6 @@
         repo: https://github.com/inet-framework/inet.git
         dest: /opt/omnetpp/samples/inet
 
-    - name: build inet
-      command: "make {{ item }} -j 3"
-      args:
-        chdir: /opt/omnetpp/samples/inet
-        creates: /opt/omnetpp/samples/inet/out/gcc-debug/src/libINET.so
-      with_items:
-        - "makefiles"
-        - "all"
-
     - name: copy required inet changes
       command: "cp {{ item }}"
       args:
@@ -166,6 +157,15 @@
         - "/vagrant/inet_changes/EtherMAC.ned /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/ethernet/"
         - "/vagrant/inet_changes/EtherMACFullDuplex.ned /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/ethernet/"
         - "/vagrant/inet_changes/MACBase.cc /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/base/"
+
+    - name: build inet
+      command: "make {{ item }} -j 3"
+      args:
+        chdir: /opt/omnetpp/samples/inet
+        creates: /opt/omnetpp/samples/inet/out/gcc-debug/src/libINET.so
+      with_items:
+        - "makefiles"
+        - "all"
 
     - name: pull GIT projects
       git:
