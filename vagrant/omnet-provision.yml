@@ -16,7 +16,16 @@
         create: yes
         line: yes
         state: present
-
+        
+    - name: enable autologin
+      lineinfile:
+        dest: /etc/gdm/custom.conf
+        insertafter: '^\[daemon\]'
+        line: "{{ item }}"
+      with_items:  
+        - "AutomaticLoginEnable=true"
+        - "AutomaticLogin=root"
+        
     - shell:
         cmd: "{{ item }}"
       with_items:
@@ -162,14 +171,7 @@
 
 ## DESKTOP STUFF GNOME SETTINGS USW
 
-    - name: enable autologin
-      lineinfile:
-        dest: /etc/gdm/custom.conf
-        insertafter: '^\[daemon\]'
-        line: "{{ item }}"
-      with_items:  
-        - "AutomaticLoginEnable=true"
-        - "AutomaticLogin=root"
+
 
     - name: create desktop shortcut
       copy:
