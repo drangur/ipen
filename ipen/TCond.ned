@@ -17,7 +17,7 @@
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //
 
-package inet.examples.ipen;
+package inet.examples.sdndemo.ipen;
 
 import inet.linklayer.contract.ITrafficConditioner;
 import inet.networklayer.diffserv.DSCPMarker;
