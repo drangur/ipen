@@ -80,7 +80,6 @@ network SimNet
         LSR1: RSVP_LSR {
             parameters:
                 peers = "ppp0 ppp2";
-                numExtInterfaces = 1;
                 @display("p=158,131");
             gates:
                 pppg[3];
