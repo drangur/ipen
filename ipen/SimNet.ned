@@ -13,7 +13,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package package inet.examples.sdndemo.ipen;
+package inet.examples.sdndemo.ipen;
 
 import inet.node.inet.StandardHost;
 import inet.node.mpls.RSVP_LSR;
