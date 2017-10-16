@@ -149,14 +149,22 @@
         repo: https://github.com/inet-framework/inet.git
         dest: /opt/omnetpp/samples/inet
 
-    - name: copy required inet changes
-      command: "cp {{ item }}"
-      args:
-        chdir: /opt/omnetpp/samples/inet
+    - name: pull GIT projects
+      git:
+        repo: "{{ item.repo }}"
+        dest: "{{ item.dest }}"
       with_items:
-        - "/vagrant/inet_changes/EtherMAC.ned /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/ethernet/"
-        - "/vagrant/inet_changes/EtherMACFullDuplex.ned /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/ethernet/"
-        - "/vagrant/inet_changes/MACBase.cc /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/base/"
+              - repo: "https://github.com/drangur/ipen.git"
+                dest: "/opt/omnetpp/samples/inet/examples/sdndemo"
+              - repo: "https://github.com/fstolba/ofomnet.git"
+                dest: "/opt/omnetpp/samples/ofomnet"
+
+    - name: copy required inet changes
+      command: "mv {{ item }}"
+      with_items:
+        - "/opt/omnetpp/samples/inet/examples/sdndemo/vagrant/inet_changes/EtherMAC.ned /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/ethernet/"
+        - "/opt/omnetpp/samples/inet/examples/sdndemo/vagrant/inet_changes/EtherMACFullDuplex.ned /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/ethernet/"
+        - "/opt/omnetpp/samples/inet/examples/sdndemo/vagrant/inet_changes/MACBase.cc /opt/omnetpp-5.1.1/samples/inet/src/inet/linklayer/base/"
 
     - name: build inet
       command: "make {{ item }} -j 3"
@@ -167,15 +175,7 @@
         - "makefiles"
         - "all"
 
-    - name: pull GIT projects
-      git:
-        repo: "{{ item.repo }}"
-        dest: "{{ item.dest }}"
-      with_items:
-              - repo: "https://github.com/drangur/ipen.git"
-                dest: "/opt/omnetpp/samples/inet/examples/sdndemo"
-              - repo: "https://github.com/fstolba/ofomnet.git"
-                dest: "/opt/omnetpp/samples/ofomnet"
+
 
 
 ## DESKTOP STUFF GNOME SETTINGS USW
